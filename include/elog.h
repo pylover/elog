@@ -45,12 +45,8 @@ elog_log(enum elog_verbosity level, const char *filename, int lineno,
         const char *function, int flags, const char *format, ...);
 
 
-#define __BASEFILENAME__ \
-    (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
-
-
 #define LOG(l, n, ...) \
-    elog_log(l, __BASEFILENAME__, __LINE__ , __FUNCTION__, n, __VA_ARGS__)
+    elog_log(l, basename(__FILE__), __LINE__ , __FUNCTION__, n, __VA_ARGS__)
 
 
 /* Regular logging macros */
@@ -68,7 +64,7 @@ elog_log(enum elog_verbosity level, const char *filename, int lineno,
 #define FATALN(...)   LOG(ELOG_FATAL,   ELOG_NOTRAILINGLF, __VA_ARGS__)
 
 /* Just prints into standard error */
-#define PRINTE(...)  dprintf(elog_outfd, ## __VA_ARGS__)
+#define PRINT(...)  dprintf(elog_outfd, __VA_ARGS__)
 
 
 #endif  // ELOG_H_
