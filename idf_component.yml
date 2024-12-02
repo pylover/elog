@@ -1,0 +1,4 @@
+version: "0.1.0"
+description: "ESP32 nano logging library."
+url: "https://github.com/pylover/elog"
+license: "MIT"

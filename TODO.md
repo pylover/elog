@@ -1,0 +1,1 @@
+- use putchar for performance
