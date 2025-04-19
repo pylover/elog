@@ -45,6 +45,10 @@ elog_log(enum elog_verbosity level, const char *filename, int lineno,
         const char *function, int flags, const char *format, ...);
 
 
+enum elog_verbosity
+elog_verbosity_from_string(const char * verbosity);
+
+
 #define LOG(l, n, ...) \
     elog_log(l, basename(__FILE__), __LINE__ , __FUNCTION__, n, __VA_ARGS__)
 

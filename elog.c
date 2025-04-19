@@ -71,3 +71,28 @@ elog_log(enum elog_verbosity level, const char *filename, int lineno,
         va_end(args);
     }
 }
+
+
+enum elog_verbosity
+elog_verbosity_from_string(const char * verbosity) {
+    if ((verbosity == NULL) || (strlen(verbosity) < 1)) {
+        return ELOG_UNKNOWN;
+    }
+
+    switch (verbosity[0]) {
+        case 's':
+            return ELOG_SILENT;
+        case 'f':
+            return ELOG_FATAL;
+        case 'e':
+            return ELOG_ERROR;
+        case 'w':
+            return ELOG_WARNING;
+        case 'i':
+            return ELOG_INFO;
+        case 'd':
+            return ELOG_DEBUG;
+        default:
+            return ELOG_UNKNOWN;
+    }
+}
